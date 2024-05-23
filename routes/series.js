@@ -1,8 +1,13 @@
 const router = require('express').Router();
-const bookController = require('../controllers/seriesController');
+const seriesController = require('../controllers/seriesController');
 
-router.get('/', (req, res, next) => {
-  res.send('Series Routes');
-});
+// Get All Series
+router.get('/', seriesController.index);
+
+// Get One Series
+router.get('/:id', seriesController.show);
+
+// Delete Series By Id
+router.delete("/:id", seriesController.destroy);
 
 module.exports = router;

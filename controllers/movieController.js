@@ -1,15 +1,18 @@
 const { response } = require('express');
 const mongoose = require('mongoose');
-const Movies = require('../models/movie');
+const Movie = require('../models/movie');
+const { getAndSendAll, getAndSendOne, deleteItemAndSendMessage } = require("./baseController");
 
 const index = async (req, res) => {
   //#swagger.tags = ['Movie']
   // Get all movies from mongodb
+  getAndSendAll(req, res, Movie);
 };
 
 const show = async (req, res) => {
   //#swagger.tags = ['Movie']
   // Get a single movie from mongodb
+  getAndSendOne(req, res, Movie);
 };
 
 const store = async (req, res) => {
@@ -25,6 +28,7 @@ const update = async (req, res) => {
 const destroy = async (req, res) => {
   //#swagger.tags = ['Movie']
   // Delete a movie from mongodb
+  deleteItemAndSendMessage(req, res, Movie);
 };
 
 module.exports = { index, show, store, update, destroy };

@@ -1,8 +1,13 @@
 const router = require('express').Router();
-const bookController = require('../controllers/movieController');
+const movieController = require('../controllers/movieController');
 
-router.get('/', (req, res, next) => {
-  res.send('Movies Routes');
-});
+// Get All Movies
+router.get('/', movieController.index);
+
+// Get One Movie
+router.get('/:id', movieController.show);
+
+// Delete Movie By Id
+router.delete("/:id", movieController.destroy);
 
 module.exports = router;

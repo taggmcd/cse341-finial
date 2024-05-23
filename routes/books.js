@@ -1,8 +1,13 @@
 const router = require('express').Router();
 const bookController = require('../controllers/bookController');
 
-router.get('/', (req, res, next) => {
-  res.send('Book Routes');
-});
+// Get All Books
+router.get('/', bookController.index);
+
+// Get One Book
+router.get('/:id', bookController.show);
+
+// Delete Book By Id
+router.delete("/:id", bookController.destroy);
 
 module.exports = router;
