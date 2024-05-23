@@ -1,15 +1,18 @@
 const { response } = require('express');
 const mongoose = require('mongoose');
 const Book = require('../models/book');
+const { getAndSendAll, getAndSendOne } = require("./baseController");
 
 const index = async (req, res) => {
   //#swagger.tags = ['Books']
   // Get all books from mongodb
+  getAndSendAll(req, res, Book);
 };
 
 const show = async (req, res) => {
   //#swagger.tags = ['Books']
   // Get a single book from mongodb
+  getAndSendOne(req, res, Book);
 };
 
 const store = async (req, res) => {
