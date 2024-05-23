@@ -1,8 +1,10 @@
 const router = require('express').Router();
-const bookController = require('../controllers/seriesController');
+const seriesController = require('../controllers/seriesController');
 
-router.get('/', (req, res, next) => {
-  res.send('Series Routes');
-});
+// Get All Series
+router.get('/', seriesController.index);
+
+// Get One Serie
+router.get('/:id', seriesController.show);
 
 module.exports = router;

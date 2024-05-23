@@ -1,6 +1,5 @@
 // Retrieve and send all data
 const getAndSendAll = async (req, res, model) => {
-    const modelName = model.constructor.modelName.toLowerCase();
     try {
       const data = await model.find({});
       if (data.length > 0) {
@@ -8,19 +7,18 @@ const getAndSendAll = async (req, res, model) => {
         res.status(200).send(data);
       } else {
         res.setHeader("Content-Type", "application/json");
-        res.status(404).send({ message: `Could not find any ${modelName}.`});
+        res.status(404).send({ message: `Could not find any instance of these items.`});
       }
   
     } catch (err) {
       res.setHeader("Content-Type", "application/json");
-      res.status(500).send({ message: `Could not retrieve instance of ${modelName} from database` });
+      res.status(500).send({ message: `Could not retrieve instance of instance of these items from database` });
     }
   };
 
 // Retrieve and send only one instance of data by id
 const getAndSendOne = async (req, res, model) => {
     const id = req.params.id;
-    const modelName = model.constructor.modelName.toLowerCase();
     try {
       const data = await model.findById(id).exec();
       if (data) {
@@ -28,11 +26,11 @@ const getAndSendOne = async (req, res, model) => {
         res.status(200).send(data);
       } else {
         res.setHeader("Content-Type", "application/json");
-        res.status(404).send({ message: `Could not find ${modelName}. Id: ${id}` });
+        res.status(404).send({ message: `Could not find the requested item. Id: ${id}` });
       }
     } catch (err) {
       res.setHeader("Content-Type", "application/json");
-      res.status(500).send({ message: `Could not retrieve ${modelName}. Id: ${id}` });
+      res.status(500).send({ message: `Could not retrieve the requested item. Id: ${id}` });
     }
   };
 
