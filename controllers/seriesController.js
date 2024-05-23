@@ -1,7 +1,7 @@
 const { response } = require('express');
 const mongoose = require('mongoose');
 const Series = require('../models/series');
-const { getAndSendAll, getAndSendOne } = require("./baseController");
+const { getAndSendAll, getAndSendOne, deleteItemAndSendMessage } = require("./baseController");
 
 
 const index = async (req, res) => {
@@ -30,6 +30,7 @@ const update = async (req, res) => {
 const destroy = async (req, res) => {
   //#swagger.tags = ['Series']
   // Delete a series from mongodb
+  deleteItemAndSendMessage(req, res, Series);
 };
 
 module.exports = { index, show, store, update, destroy };
