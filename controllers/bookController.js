@@ -18,11 +18,35 @@ const show = async (req, res) => {
 const store = async (req, res) => {
   //#swagger.tags = ['Books']
   // Create a new book in mongodb
+  const { title, author, genre, publishedYear, isbn, description, coverImage } = req.body;
+  try {
+    const newBook = new Book({
+        title,
+        author,
+        genre,
+        publishedYear,
+        isbn,
+        description,
+        coverImage,
+    });
+    const savedBook = await newBook.save();
+    res.status(201).json(savedBook);
+} catch (error) {
+    res.status(500).json({ error: 'Error creating book' });
+}
 };
 
 const update = async (req, res) => {
   //#swagger.tags = ['Books']
   // Update a book in mongodb
+  const bookId = new ObjectId(req.params.id)
+  const { title, author, genre, publishedYear, isbn, description, coverImage } = req.body;
+  try {
+    const book = await Book.findByIdAndUpdate(bookId, {title, author, genre, publishedYear, isbn, description, coverImage}, { new: true });
+    res.status(204).json(book);
+  } catch (error) {
+    res.status(400).send(error);
+  }
 };
 
 const destroy = async (req, res) => {

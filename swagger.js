@@ -11,8 +11,8 @@ const doc = {
     description:
       'A RESTful API too keept track of the movies, series, and books you are watching and reading.',
   },
-  basePath: '/',
-  schemes: ['https', 'http'],
+  host: 'https://localhost:3000',
+  schemes: ['http', 'https'],
 };
 
 swaggerAutogen(outputFile, endpointsFiles, doc);

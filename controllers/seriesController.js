@@ -20,11 +20,35 @@ const show = async (req, res) => {
 const store = async (req, res) => {
   //#swagger.tags = ['Series']
   // Create a new series in mongodb
+  // Create a new movie in mongodb
+  try {
+    const { title, releaseYear, genre, numberOfEpisodes, plotSummary, posterUrl } = req.body;
+    const newSeries = new Series({
+        title,
+        releaseYear,
+        genre,
+        numberOfEpisodes,
+        plotSummary,
+        posterUrl,
+    });
+    const savedSeries = await newSeries.save();
+    res.status(201).json(savedSeries);
+} catch (error) {
+    res.status(500).json({ error: 'Error creating Series' });
+}
 };
 
 const update = async (req, res) => {
   //#swagger.tags = ['Series']
   // Update a series in mongodb
+  const seriesId = new ObjectId(req.params.id)
+  const { title, releaseYear, genre, numberOfEpisodes, plotSummary, posterUrl } = req.body;
+  try {
+    const series = await Movies.findByIdAndUpdate(seriesId, {title, releaseYear, genre, numberOfEpisodes, plotSummary, posterUrl}, { new: true });
+    res.status(204).json(series);
+  } catch (error) {
+    res.status(400).send(error);
+  }
 };
 
 const destroy = async (req, res) => {
