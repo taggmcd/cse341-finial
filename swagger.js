@@ -1,6 +1,6 @@
 const swaggerAutogen = require('swagger-autogen')();
 const outputFile = './swagger.json';
-const endpointsFiles = ['./routes/book.js'];
+const endpointsFiles = ['./routes/index.js'];
 const port = process.env.PORT || 3000;
 const url = process.env.URL || 'localhost';
 
