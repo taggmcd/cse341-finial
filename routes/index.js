@@ -5,7 +5,7 @@ router.get('/', (req, res, next) => {
 });
 
 
-router.use('/', require('./swagger'));
+// router.use('/', require('./swagger'));
 router.use('/api/books', require('./books.js'));
 router.use('/api/movies', require('./movies.js'));
 router.use('/api/series', require('./series.js'));
