@@ -5,11 +5,11 @@
     "title": "Media Tracking API",
     "description": "A RESTful API too keept track of the movies, series, and books you are watching and reading."
   },
-  "host": "localhost:3000",
+  "host": "cse341-finial.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http",
-    "https"
+    "https",
+    "http"
   ],
   "paths": {
     "/": {
@@ -18,16 +18,6 @@
         "responses": {
           "200": {
             "description": "OK"
-          }
-        }
-      }
-    },
-    "/api-docs": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
           }
         }
       }

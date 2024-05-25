@@ -1,6 +1,4 @@
 const swaggerAutogen = require('swagger-autogen')();
-const port = process.env.PORT || 3000;
-const url = process.env.URL || 'localhost';
 
 const doc = {
   info: {
@@ -9,8 +7,8 @@ const doc = {
     description:
       'A RESTful API too keept track of the movies, series, and books you are watching and reading.',
   },
-  host: 'https://localhost:3000',
-  schemes: ['http', 'https'],
+  host: 'cse341-finial.onrender.com',
+  schemes: ['https', 'http'],
 };
 
 const outputFile = './swagger.json';
