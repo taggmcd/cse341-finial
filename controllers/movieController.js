@@ -6,13 +6,13 @@ const { getAndSendAll, getAndSendOne, deleteItemAndSendMessage } = require("./ba
 const index = async (req, res) => {
   //#swagger.tags = ['Movie']
   // Get all movies from mongodb
-  getAndSendAll(req, res, Movie);
+  getAndSendAll(req, res, Movies);
 };
 
 const show = async (req, res) => {
   //#swagger.tags = ['Movie']
   // Get a single movie from mongodb
-  getAndSendOne(req, res, Movie);
+  getAndSendOne(req, res, Movies);
 };
 
 const store = async (req, res) => {
@@ -39,7 +39,7 @@ const store = async (req, res) => {
 const update = async (req, res) => {
   //#swagger.tags = ['Movie']
   // Update a movie in mongodb
-  const movieId = new ObjectId(req.params.id)
+  const movieId = req.params.id;
   const { title, releaseYear, genres, runtime, rated, plot, posterUrl } = req.body;
   try {
     const movie = await Movies.findByIdAndUpdate(movieId, {title, releaseYear, genres, runtime, rated, plot, posterUrl}, { new: true });
