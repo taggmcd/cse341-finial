@@ -39,10 +39,10 @@ const store = async (req, res) => {
 const update = async (req, res) => {
   //#swagger.tags = ['Users']
   // Update a user in mongodb
-  const userId = new ObjectId(req.params.id)
+  const userId = req.params.id;
   const { firstName, lastName, email, password, roles, dob, profileImage } = req.body;
   try {
-    const user = await Movies.findByIdAndUpdate(userId, {firstName, lastName, email, password, roles, dob, profileImage}, { new: true });
+    const user = await User.findByIdAndUpdate(userId, {firstName, lastName, email, password, roles, dob, profileImage}, { new: true });
     res.status(204).json(user);
   } catch (error) {
     res.status(400).send(error);

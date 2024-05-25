@@ -39,7 +39,7 @@ const store = async (req, res) => {
 const update = async (req, res) => {
   //#swagger.tags = ['Books']
   // Update a book in mongodb
-  const bookId = new ObjectId(req.params.id)
+  const bookId = req.params.id;
   const { title, author, genre, publishedYear, isbn, description, coverImage } = req.body;
   try {
     const book = await Book.findByIdAndUpdate(bookId, {title, author, genre, publishedYear, isbn, description, coverImage}, { new: true });

@@ -41,10 +41,10 @@ const store = async (req, res) => {
 const update = async (req, res) => {
   //#swagger.tags = ['Series']
   // Update a series in mongodb
-  const seriesId = new ObjectId(req.params.id)
+  const seriesId = req.params.id;
   const { title, releaseYear, genre, numberOfEpisodes, plotSummary, posterUrl } = req.body;
   try {
-    const series = await Movies.findByIdAndUpdate(seriesId, {title, releaseYear, genre, numberOfEpisodes, plotSummary, posterUrl}, { new: true });
+    const series = await Series.findByIdAndUpdate(seriesId, {title, releaseYear, genre, numberOfEpisodes, plotSummary, posterUrl}, { new: true });
     res.status(204).json(series);
   } catch (error) {
     res.status(400).send(error);
