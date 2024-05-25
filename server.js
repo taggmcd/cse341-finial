@@ -8,6 +8,9 @@ const port = process.env.PORT || 3000;
 const url = process.env.URL || 'localhost';
 const corsHeaders = require('./middleware/cors');
 
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger.json');
+
 // Body parser
 app.use(express.json());
 
@@ -19,6 +22,9 @@ const mongodb = require('./database/mongo.js');
 
 // Routes
 app.use('/', require('./routes'));
+
+// Swagger
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 mongodb.init((err) => {
   if (err) {
