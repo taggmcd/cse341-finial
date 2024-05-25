@@ -8,6 +8,6 @@ const MovieSchema = new mogoose.Schema({
     rated: String,
     plot: String,
     posterUrl: String,
-});
+}, { versionKey: false });
 
 module.exports = mogoose.model('movie', MovieSchema, 'movies');

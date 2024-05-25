@@ -8,6 +8,6 @@ const BookSchema = new mogoose.Schema({
     isbn: String,
     description: String,
     coverImage: String,
-});
+}, { versionKey: false });
 
 module.exports = mogoose.model('book', BookSchema, 'books');
