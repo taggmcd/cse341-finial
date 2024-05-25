@@ -7,6 +7,6 @@ const SeriesSchema = new mogoose.Schema({
     numberOfEpisodes: Number,
     plotSummary: String,
     posterUrl: String,
-});
+}, { versionKey: false });
 
 module.exports = mogoose.model('series', SeriesSchema, 'series');

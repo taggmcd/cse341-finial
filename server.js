@@ -33,6 +33,6 @@ mongodb.init((err) => {
   console.log('Connected to MongoDB');
 
   app.listen(port, () => {
-    console.log(`Server is running at http://${url}:${port}`);
+    console.log(`Server is running at http://${url}:${port}/api-docs`);
   });
 });

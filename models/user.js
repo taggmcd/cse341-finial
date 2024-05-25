@@ -8,6 +8,6 @@ const UserSchema = new mogoose.Schema({
     roles: [{ type: String }], // Array of roles (e.g., 'admin', 'user')
     dob: Date, // Date of birth
     profileImage: String, // URL to profile image
-});
+}, { versionKey: false });
 
 module.exports = mogoose.model('user', UserSchema, 'users');
