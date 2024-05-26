@@ -41,7 +41,7 @@ const deleteItemAndSendMessage = async (req, res, model) => {
     try {
         await model.findByIdAndDelete(id)
         res.setHeader("Content-Type", "application/json");
-        res.status(200).send({ message: "Deleted item succesfully" });
+        res.status(200).send({ message: "Deleted item successfully" });
     } catch (err) {
         res.setHeader("Content-Type", "application/json");
         res.status(422).send({ message: "Could not delete item. Id: " + id, error: "Not a valid id" });
