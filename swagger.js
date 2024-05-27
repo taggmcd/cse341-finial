@@ -5,7 +5,7 @@ const doc = {
     version: '1.0.0',
     title: 'Media Tracking API',
     description:
-      'A RESTful API too keept track of the movies, series, and books you are watching and reading.',
+      'A RESTful API to keep track of the movies, series, and books you are watching and reading.',
   },
   host: 'cse341-finial.onrender.com',
   schemes: ['https', 'http'],
