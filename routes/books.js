@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const bookController = require('../controllers/bookController');
 const bookValidate = require('../middleware/booksValidator');
+const { isAuthenticated } = require('../middleware/authenticate');
 
 // Get All Books
 router.get('/', bookController.index);

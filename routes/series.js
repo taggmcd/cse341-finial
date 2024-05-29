@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const seriesController = require('../controllers/seriesController');
 const seriesValidate = require('../middleware/seriesValidator');
+const { isAuthenticated } = require('../middleware/authenticate');
 
 // Get All Series
 router.get('/', seriesController.index);

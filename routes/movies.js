@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const movieController = require('../controllers/movieController');
 const moviesValidate = require('../middleware/moviesValidator');
+const { isAuthenticated } = require('../middleware/authenticate');
 
 // Get All Movies
 router.get('/', movieController.index);
