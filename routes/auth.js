@@ -4,7 +4,7 @@ router.get('/', (req, res, next) => {
   res.send('Auth Routes');
 });
 
-app.get(
+router.get(
   '/github/callback',
   passport.authenticate('github', {
     failureRedirect: '/api-docs',
