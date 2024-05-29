@@ -19,14 +19,17 @@ const swaggerDocument = require('./swagger.json');
 
 // Body parser
 app.use(express.json());
-// Passport 
-app.use(session({
-  secret: "secret",
-  resave: false,
-  saveUninitialized: true,
-}))
+// Passport
+app
+  .use(
+    session({
+      secret: 'secret',
+      resave: false,
+      saveUninitialized: true,
+    })
+  )
   .use(passport.initialize())
-  .use(passport.session())
+  .use(passport.session());
 // Set CORS headers
 app.use(corsHeaders);
 
@@ -40,30 +43,24 @@ app.use('/', require('./routes'));
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // Passport
-passport.use(new GithubStrategy({
-  clientID: process.env.GITHUB_CLIENT_ID,
-  clientSecret: process.env.GITHUB_CLIENT_SECRET,
-  callbackURL: process.env.CALLBACK_URL
-  },
-  function(accessToken, refreshToken, profile, done) {
-    return done(null, profile);
-  }
-));
+passport.use(
+  new GithubStrategy(
+    {
+      clientID: process.env.GITHUB_CLIENT_ID,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET,
+      callbackURL: process.env.CALLBACK_URL,
+    },
+    function (accessToken, refreshToken, profile, done) {
+      return done(null, profile);
+    }
+  )
+);
 passport.serializeUser((user, done) => {
   done(null, user);
 });
 passport.deserializeUser((user, done) => {
   done(null, user);
 });
-
-app.get('/', (req, res) => { res.send(req.session.user !== undefined ? `Logged in as ${req.session.user.username}` : "Logged Out")});
-
-app.get('/github/callback', passport.authenticate('github', {
-    failureRedirect: '/api-docs', session: false}),
-    (req, res) => {        
-        req.session.user = req.user;
-        res.redirect('/');
-    });
 
 mongodb.init((err) => {
   if (err) {
