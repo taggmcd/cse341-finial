@@ -10,12 +10,23 @@ router.get('/', userController.index);
 router.get('/:id', userController.show);
 
 // Store One User
-router.post('/', userValidate.userValidationRules(), userValidate.validate, userController.store);
+router.post(
+  '/',
+  userValidate.userValidationRules(),
+  userValidate.validate,
+  userController.store
+);
 
 // Update One User
-router.put('/:id', userValidate.userValidationRules(), userValidate.validate, userController.update);
+router.put(
+  '/:id',
+  isAuthenticated,
+  userValidate.userValidationRules(),
+  userValidate.validate,
+  userController.update
+);
 
 // Delete User By Id
-router.delete("/:id", userController.destroy);
+router.delete('/:id', isAuthenticated, userController.destroy);
 
 module.exports = router;

@@ -7,7 +7,6 @@ const env = require('dotenv').config();
 const passport = require('passport');
 const session = require('express-session');
 const GithubStrategy = require('passport-github2').Strategy;
-const cors = require('cors');
 
 // variables
 const port = process.env.PORT || 3000;
@@ -30,6 +29,7 @@ app
   )
   .use(passport.initialize())
   .use(passport.session());
+
 // Set CORS headers
 app.use(corsHeaders);
 
