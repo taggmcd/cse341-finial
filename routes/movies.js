@@ -10,12 +10,24 @@ router.get('/', movieController.index);
 router.get('/:id', movieController.show);
 
 // Store One Movie
-router.post('/', moviesValidate.movieValidationRules(),moviesValidate.validate, movieController.store);
+router.post(
+  '/',
+  isAuthenticated,
+  moviesValidate.movieValidationRules(),
+  moviesValidate.validate,
+  movieController.store
+);
 
 // Update One Movie
-router.put('/:id', moviesValidate.movieValidationRules(),moviesValidate.validate, movieController.update);
+router.put(
+  '/:id',
+  isAuthenticated,
+  moviesValidate.movieValidationRules(),
+  moviesValidate.validate,
+  movieController.update
+);
 
 // Delete Movie By Id
-router.delete("/:id", movieController.destroy);
+router.delete('/:id', isAuthenticated, movieController.destroy);
 
 module.exports = router;

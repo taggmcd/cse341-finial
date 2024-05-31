@@ -10,12 +10,24 @@ router.get('/', seriesController.index);
 router.get('/:id', seriesController.show);
 
 // Store One Series
-router.post('/', seriesValidate.seriesValidationRules(), seriesValidate.validate, seriesController.store);
+router.post(
+  '/',
+  isAuthenticated,
+  seriesValidate.seriesValidationRules(),
+  seriesValidate.validate,
+  seriesController.store
+);
 
 // Update One Series
-router.put('/:id', seriesValidate.seriesValidationRules(), seriesValidate.validate, seriesController.update);
+router.put(
+  '/:id',
+  isAuthenticated,
+  seriesValidate.seriesValidationRules(),
+  seriesValidate.validate,
+  seriesController.update
+);
 
 // Delete Series By Id
-router.delete("/:id", seriesController.destroy);
+router.delete('/:id', isAuthenticated, seriesController.destroy);
 
 module.exports = router;

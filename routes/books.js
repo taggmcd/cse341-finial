@@ -10,12 +10,24 @@ router.get('/', bookController.index);
 router.get('/:id', bookController.show);
 
 // Store One Book
-router.post('/', bookValidate.bookValidationRules(), bookValidate.validate, bookController.store);
+router.post(
+  '/',
+  isAuthenticated,
+  bookValidate.bookValidationRules(),
+  bookValidate.validate,
+  bookController.store
+);
 
 // Update One Book
-router.put('/:id', bookValidate.bookValidationRules(), bookValidate.validate, bookController.update);
+router.put(
+  '/:id',
+  isAuthenticated,
+  bookValidate.bookValidationRules(),
+  bookValidate.validate,
+  bookController.update
+);
 
 // Delete Book By Id
-router.delete("/:id", bookController.destroy);
+router.delete('/:id', isAuthenticated, bookController.destroy);
 
 module.exports = router;
