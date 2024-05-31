@@ -1,7 +1,13 @@
 const { response } = require('express');
 const mongoose = require('mongoose');
 const User = require('../models/user');
-const { getAndSendAll, getAndSendOne, deleteItemAndSendMessage } = require("./baseController");
+const {
+  getAndSendAll,
+  getAndSendOne,
+  deleteItemAndSendMessage,
+} = require('./baseController');
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 const index = async (req, res) => {
   //#swagger.tags = ['Users']
@@ -18,21 +24,24 @@ const show = async (req, res) => {
 const store = async (req, res) => {
   //#swagger.tags = ['Users']
   // Create a new user in mongodb
-  const { firstName, lastName, email, password, roles, dob, profileImage} = req.body;
+  const { firstName, lastName, email, password, roles, dob, profileImage } =
+    req.body;
+  let hashedPasword = await bcrypt.hash(password, saltRounds);
+
   try {
     const newUser = new User({
-    firstName,
-    lastName,
-    email,
-    password,
-    roles,
-    dob,
-    profileImage
-  });
-  const savedUser = await newUser.save();
-  res.status(201).json(savedUser);
+      firstName,
+      lastName,
+      email,
+      password: hashedPasword,
+      roles,
+      dob,
+      profileImage,
+    });
+    const savedUser = await newUser.save();
+    res.status(201).json(savedUser);
   } catch (error) {
-    res.status(500).json({error: 'Error creating User'});
+    res.status(500).json({ error: error.message });
   }
 };
 
@@ -40,9 +49,14 @@ const update = async (req, res) => {
   //#swagger.tags = ['Users']
   // Update a user in mongodb
   const userId = req.params.id;
-  const { firstName, lastName, email, password, roles, dob, profileImage } = req.body;
+  const { firstName, lastName, email, password, roles, dob, profileImage } =
+    req.body;
   try {
-    const user = await User.findByIdAndUpdate(userId, {firstName, lastName, email, password, roles, dob, profileImage}, { new: true });
+    const user = await User.findByIdAndUpdate(
+      userId,
+      { firstName, lastName, email, password, roles, dob, profileImage },
+      { new: true }
+    );
     res.status(204).json(user);
   } catch (error) {
     res.status(400).send(error);

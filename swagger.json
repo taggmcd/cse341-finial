@@ -5,12 +5,8 @@
     "title": "Media Tracking API",
     "description": "A RESTful API to keep track of the movies, series, and books you are watching and reading."
   },
-  "host": "cse341-finial.onrender.com",
   "basePath": "/",
-  "schemes": [
-    "https",
-    "http"
-  ],
+  "schemes": ["https", "http"],
   "paths": {
     "/": {
       "get": {
@@ -44,9 +40,7 @@
     },
     "/api/books/": {
       "get": {
-        "tags": [
-          "Books"
-        ],
+        "tags": ["Books"],
         "description": "",
         "responses": {
           "default": {
@@ -55,9 +49,7 @@
         }
       },
       "post": {
-        "tags": [
-          "Books"
-        ],
+        "tags": ["Books"],
         "description": "",
         "parameters": [
           {
@@ -109,9 +101,7 @@
     },
     "/api/books/{id}": {
       "get": {
-        "tags": [
-          "Books"
-        ],
+        "tags": ["Books"],
         "description": "",
         "parameters": [
           {
@@ -128,9 +118,7 @@
         }
       },
       "put": {
-        "tags": [
-          "Books"
-        ],
+        "tags": ["Books"],
         "description": "",
         "parameters": [
           {
@@ -186,9 +174,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Books"
-        ],
+        "tags": ["Books"],
         "description": "",
         "parameters": [
           {
@@ -207,9 +193,7 @@
     },
     "/api/movies/": {
       "get": {
-        "tags": [
-          "Movie"
-        ],
+        "tags": ["Movie"],
         "description": "",
         "responses": {
           "default": {
@@ -218,9 +202,7 @@
         }
       },
       "post": {
-        "tags": [
-          "Movie"
-        ],
+        "tags": ["Movie"],
         "description": "",
         "parameters": [
           {
@@ -272,9 +254,7 @@
     },
     "/api/movies/{id}": {
       "get": {
-        "tags": [
-          "Movie"
-        ],
+        "tags": ["Movie"],
         "description": "",
         "parameters": [
           {
@@ -291,9 +271,7 @@
         }
       },
       "put": {
-        "tags": [
-          "Movie"
-        ],
+        "tags": ["Movie"],
         "description": "",
         "parameters": [
           {
@@ -349,9 +327,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Movie"
-        ],
+        "tags": ["Movie"],
         "description": "",
         "parameters": [
           {
@@ -370,9 +346,7 @@
     },
     "/api/series/": {
       "get": {
-        "tags": [
-          "Series"
-        ],
+        "tags": ["Series"],
         "description": "",
         "responses": {
           "default": {
@@ -381,9 +355,7 @@
         }
       },
       "post": {
-        "tags": [
-          "Series"
-        ],
+        "tags": ["Series"],
         "description": "",
         "parameters": [
           {
@@ -432,9 +404,7 @@
     },
     "/api/series/{id}": {
       "get": {
-        "tags": [
-          "Series"
-        ],
+        "tags": ["Series"],
         "description": "",
         "parameters": [
           {
@@ -451,9 +421,7 @@
         }
       },
       "put": {
-        "tags": [
-          "Series"
-        ],
+        "tags": ["Series"],
         "description": "",
         "parameters": [
           {
@@ -506,9 +474,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Series"
-        ],
+        "tags": ["Series"],
         "description": "",
         "parameters": [
           {
@@ -527,9 +493,7 @@
     },
     "/api/users/": {
       "get": {
-        "tags": [
-          "Users"
-        ],
+        "tags": ["Users"],
         "description": "",
         "responses": {
           "default": {
@@ -538,9 +502,7 @@
         }
       },
       "post": {
-        "tags": [
-          "Users"
-        ],
+        "tags": ["Users"],
         "description": "",
         "parameters": [
           {
@@ -589,9 +551,7 @@
     },
     "/api/users/{id}": {
       "get": {
-        "tags": [
-          "Users"
-        ],
+        "tags": ["Users"],
         "description": "",
         "parameters": [
           {
@@ -608,9 +568,7 @@
         }
       },
       "put": {
-        "tags": [
-          "Users"
-        ],
+        "tags": ["Users"],
         "description": "",
         "parameters": [
           {
@@ -666,9 +624,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Users"
-        ],
+        "tags": ["Users"],
         "description": "",
         "parameters": [
           {
