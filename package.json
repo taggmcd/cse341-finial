@@ -4,7 +4,7 @@
   "description": "Finial project for CSE341",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "swagger": "node swagger.js",
     "dev": "nodemon server.js",
     "start": "node server.js"
@@ -33,5 +33,9 @@
     "passport-github2": "^0.1.12",
     "swagger-autogen": "^2.23.7",
     "swagger-ui-express": "^5.0.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^7.0.0"
   }
 }
