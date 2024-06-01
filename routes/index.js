@@ -4,8 +4,8 @@ const passport = require('passport');
 router.get('/', (req, res) => {
   res.send(
     req.session.user !== undefined
-      ? `Logged in as ${req.session.user.username}`
-      : 'Logged Out'
+      ? `Logged in as ${req.session.user.username}<script>setTimeout(function() { window.close(); }, 3000);</script>`
+      : 'Logged Out<script>setTimeout(function() { window.close(); }, 3000);</script>'
   );
 });
 
