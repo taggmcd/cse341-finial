@@ -29,6 +29,17 @@ describe('Get /api/books/66524ba5da10315bc173ef8e', () => {
   });
 });
 
+describe('Get /api/books/66524ba5da10315bc173ef8b', () => {
+  it('should respond with 404 status code if not found', async () => {
+    const res = await request(url)
+      .get('/66524ba5da10315bc173ef8b')
+      .set('Accept', 'application/json');
+
+    expect(res).toBeTruthy();
+    expect(res.status).toBe(404);
+  });
+});
+
 describe('POST /api/books', () => {
   it('should respond with 401 status code if unauthorized', async () => {
     const response = await request(url)
