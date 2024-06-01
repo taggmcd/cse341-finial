@@ -26,14 +26,14 @@ const store = async (req, res) => {
   // Create a new user in mongodb
   const { firstName, lastName, email, password, roles, dob, profileImage } =
     req.body;
-  let hashedPasword = await bcrypt.hash(password, saltRounds);
+  let hashedPassword = await bcrypt.hash(password, saltRounds);
 
   try {
     const newUser = new User({
       firstName,
       lastName,
       email,
-      password: hashedPasword,
+      password: hashedPassword,
       roles,
       dob,
       profileImage,
